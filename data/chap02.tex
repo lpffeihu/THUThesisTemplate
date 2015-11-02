@@ -1,0 +1,24 @@
+%!Mode:: "TeX:UTF-8"
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+\chapter{编译注意事项}
+\label{cha:compile}
+
+\begin{enumerate}[1. ]
+    \item 编译用 CTeX\_2.9.2.164\_Full 版本中的 pdflatex，北邮人上有，不要做更新。如果更新了编译不过就重装一下吧。如果有人搞通了 xelatex，教教我哈$\sim$；
+    \item 编译正文打开 main.tex 并编译；编译书脊打开 shuji.tex 并编译；
+    \item 各章节放在 data/ 下面，main.tex 中有引用，可以增删；
+    \item 图放在 figures/ 下面；
+    \item bib在 ref/refs.bib 文件中；
+    \item 如果文章没有任何引用 \textbackslash cite 或者 \textbackslash onlinecite，编译可能会报错；
+    \item 我有时会遇到编译报错一次后，再编译出很奇怪的错误的情况。如果是 main.tex 中报的错，删掉 main.out 重新编译，再不行删掉 main.aux；如果是 chapxx.tex 报的错，删掉 chapxx.aux 再重新编译即可。
+\end{enumerate}
+
+
+
+
+
+

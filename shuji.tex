@@ -1,0 +1,18 @@
+%!Mode:: "TeX:UTF-8"
+\documentclass[doctor]{thuthesis}
+
+\ifxetex
+  \setCJKfamilyfont{fs}[RawFeature={vertical:}]{\fontfs}
+\else % for latex/pdflatex
+  \usepackage{CJKvert}
+\fi
+
+\begin{document}
+\cauthor{匿名君}
+
+\shuji
+
+%\shuji[清华大学学位\hspace{0.2em}\raisebox{2pt}{\LaTeX}\hspace{-0.25em} 论文模板 \hspace{0.1em}\raisebox{2pt}{v\version}\hspace{-0.25em} 样例]
+\shuji[一份简明的~~\raisebox{8pt}{THUThesis}~~模板]
+%\shuji[全中文的不用这么麻烦啦]
+\end{document}

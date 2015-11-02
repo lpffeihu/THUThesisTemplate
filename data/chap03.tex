@@ -1,0 +1,50 @@
+%!Mode:: "TeX:UTF-8"
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+\chapter{公式}
+\label{cha:3}
+
+equation 环境+\textbackslash nonumber 时会跳号（虽然编号没显示，但实际上编号+1），像这样。
+
+
+\begin{equation}
+{\text{It SEEMS good here.}} \nonumber
+\end{equation}
+
+\begin{equation}
+{\text{But look at my equation number!!!}}
+\end{equation}
+
+\begin{equation*}
+{\text{equation* seems OK.}} \nonumber
+\end{equation*}
+
+\begin{equation}
+{\text{My equation number is good!!!}}
+\end{equation}
+
+
+
+
+
+
+遇到此问题可用align环境（貌似所有equation都可替换成align，最后做个查找替换也行）。
+
+
+\begin{align}
+{\text{It SEEMS good here.}} \nonumber
+\end{align}
+
+\begin{align}
+{\text{And is really OK.}}
+\end{align}
+
+
+
+
+如果你没遇到这个问题，说明也许是我编译器的问题，或者人品问题？！
+
+

@@ -1,0 +1,142 @@
+%!Mode:: "TeX:UTF-8"
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+\chapter{表格与算法}
+\label{cha:6}
+
+如果要调字号的话，直接用 \textbackslash begin\{footnotesize\} 跟 \textbackslash end\{footnotesize\}
+那套东西不行。表 \ref{tb:example} 的是一个可行的方案，用不用由你。
+
+
+\begin{table}
+    \centering
+    \caption{表格样例}
+    \label{tb:example}
+    \begin{tabular}{>{\wuhao}c|>{\xiaowu}c|>{\xiaowu}c|>{\xiaowu}c|>{\xiaowu}c|>{\xiaowu}c|>{\xiaowu}c|>{\xiaowu}c|>{\xiaowu}c|>{\xiaowu}c|>{\xiaowu}c}  \hline
+    no1 & \multicolumn{2}{>{\xiaowu}c|}{$10^{-5}$} & \multicolumn{2}{>{\xiaowu}c|}{$2 \times 10^{-5}$} & \multicolumn{2}{>{\xiaowu}c|}{$3 \times 10^{-5}$} & \multicolumn{2}{>{\xiaowu}c|}{$4 \times 10^{-5}$} & \multicolumn{2}{>{\xiaowu}c}{$5 \times 10^{-5}$}
+     \\ \hline
+    something & $0$ & $0$ & $0\%$ & $0$ & $0\%$ & 0 & $0\%$ & 0 & $0\%$ & $0$
+    \\ \hline
+    \parbox[c][1cm][c]{2cm}{\centering 换行\\换行} & $111$ & $0$ & $111$ & $111$ & $111$ & $0\%$ & $1\%$ & $100\%$ & $2\%$ & $100\%$
+    \\ \hline
+    \end{tabular}
+\end{table}
+
+
+算法的话我用的是 algorithmicx，它可以自动处理算法编号，包括章节。main.tex 里面已经配好了，可以直接拿来用。
+如果你不想用这个，请删掉 main.tex 的相关代码并加入自己的东西。算法 \ref{alg:example} 是一个示例。
+
+
+\begin{algorithm}[htb!]  % 正常就h就好了，这里是为了放到一页上好看点
+\caption{算法示例}
+\label{alg:example}
+\begin{algorithmic}[1]
+\INPUT
+    \Statex 输入1；
+    \Statex 输入2；
+\OUTPUT
+    \Statex 输出1；
+\INIT
+    \Statex 初始化1；
+    \State 步骤1； \Comment{还可以加注释哦}
+    \For{$~i=2$~ {\bf to} $~N-1$~ }
+        \State do something
+    \EndFor
+    \Repeat
+    \State lalala
+        \If{$a=0$}
+            \State $b=0$
+        \EndIf
+    \Until{some condition}
+    \State 步骤2。
+\end{algorithmic}
+\end{algorithm}
+
+
+%%%%%%
+
+
+\chapter{其他}
+\label{chp:others}
+
+没人规定一个文件里只能有一章，你想吧所有正文都放一个文件都没问题呀
+
+\section{关于文字空格}
+
+\subsection{dummy}
+
+\subsubsection{这一级的标题不会进入目录的哦}
+
+pdflatex 加上这个模板中英文混编的时候我是觉得特别难看了，比方说English这种，我这里是挤在一起的，数字如2000也是这样，公式如$x$也是这样，引用如\ref{chp:others}一样。
+
+我是不喜欢这样啦，这点 Word 就做得好呀，不知 xelatex 是不是这样，或者跟模板有关啥的。
+为了解决这个问题，我都加了空格。
+然后，又感觉英文和中文标点之间不应该有空格呀，如果句首是英文不应该在前面有空格呀啥的，可麻烦了。
+
+{\hei \sanhao 所以不是实在看不下去就不要加空格了吧。。。}
+
+如果一定要加，还是比较推荐写的时候就手动加上，像我这样查找替换为主还是挺容易出错的。
+
+我在写论文和查找替换的时候，采取了以下规则，可能稍微方便一点，但总是有漏网之鱼或者错误替换的情况出现，这时就得靠眼睛看了。
+
+在写论文的时候注意：
+\begin{enumerate}[1. ]
+    \item 纯文字的话自己填上空格，如年份，中英文夹杂啥的（其实是我不会弄）。注意如果句首是英文的话，不要加空格，更不要加换行，因为一个换行也会被 tex 认为是空格；
+    \item 不使用 \$\$ 写公式，统一用 align 就好了；
+    \item 中文和 \$ 之间先不加空格，\textbackslash ref\{\} 前后先不加空格，之后统一替换。
+\end{enumerate}
+
+写完以后，顺序进行如表 \ref{tb:replace} 所示的替换。
+{\hei 替换之前请好做好备份}。
+我这里可是没做检查，不要同一个操作进行多次哦。
+里面有普通的文字替换，也有正则表达式的替换，正则表达式替换可以用 sublime 啊，Notepad++ 什么的做。
+其中有一个步骤是看你的公式用的是中文括号（前后不应加空格）还是英文括号（前后应该加空格），请只选做其中的一步。
+注意直接在表里复制的话，粘贴出来有问题，所以请打开源代码，复制在 \verb+\verb|+ 和 \verb+|+ 之间的代码。
+
+\begin{table}
+    \centering
+\caption{替换流程}
+\label{tb:replace}
+    \begin{tabular}{>{\xiaowu}c|>{\xiaowu}c|>{\xiaowu}c|>{\xiaowu}c|>{\xiaowu}c}  \hline
+    针对人群 & 模式 & from & to  & 作用 \\\hline
+    所有 & 普通 & {\$} & \$$\sim$  & 给所有行内公式加空格 \\\hline
+    所有 & 正则 & \verb|(\\ref\{[^\}]*\})| & \verb*| \1 |  & 所有 ref 前后加空格 \\\hline
+    所有 & 正则 & \verb*|(\\ref\{[^\}]*\}) (\([a-z]\))| & \verb*|\1\2 |  & \parbox[c][1cm][c]{4cm}{\centering 把刚才替换结果中像\\ “图 1.1~(a)”变成“图 1.1(a) ”} \\\hline
+    仅中文括号 & 正则 & \verb*|（ (\\ref\{[^\}]*\}) ）| & \verb|（\1）|  & \parbox[c][1cm][c]{4cm}{\centering 删掉包含在中文括号中\\ ref 左右的空格} \\\hline
+    \parbox[c][0.6cm][c]{1cm}{\centering 仅英文\\括号} & 正则 & \verb*|\( (\\ref\{[^\}]*\}) \)| & \verb*| (\1) |  & \parbox[c][1cm][c]{5cm}{\centering 把英文括号中 ref 左右\\ 的空格挪到括号外} \\\hline
+    所有 & 正则 & \verb*|[ ~]([，。（；）])| & \verb|\1\2 |  & 删除标点前面的空格 \\\hline
+    所有 & 正则 & \verb*|([，。（；）]\$)[ \~]| & \verb|\1\2 |  & \parbox[c][1cm][c]{5cm}{\centering 若标点后直接接公式，\\ 删除标点后面的空格}    \\ \hline
+    \end{tabular}
+\end{table}
+
+\section{关于本模板附带的两个脚本文件}
+
+本模板附带了两个 bash 脚本文件，一个是 git 一键提交（c.sh），另外一个是 git 自动 pull 并编译（auto\_pull.sh）。
+
+因为我在 MAC 下写论文但是在 WIN 下编译，这套东西就挺有用的了。
+写了一点想看结果，直接 ./c.sh （后面可以加参数表示 commit 的说明），那边 WIN 下跑的 auto\_pull.sh 就会自动拉下来编译，CTEX 自带的那个编辑器还会自动刷新 PDF。
+
+如果不想用 winedt 做编辑的话，我觉得还是挺方便的，顺便连备份都做了。
+
+
+\section{如果你正在用或者想用 VIM 写论文}
+
+本人基本等价于标准程序猿一枚。
+
+如果你正在用或者想在 MAC 系统下用 VIM 写论文，并且你发现 Normal 模式经常被中文输入法打扰，你可以考虑这一页的解决方案\onlinecite{macvim}。虽然不完美，但总比没有好。
+
+WIN 下应该也有类似的解决方案，但我没找过。
+
+才不会告诉你我的毕业论文跟这个文档都是在 VIM 下码的字呢。
+
+%%%
+
+\chapter{结束语}
+\label{chp:ending}
+
+就这些了，祝你顺利毕业$\sim$
+
+

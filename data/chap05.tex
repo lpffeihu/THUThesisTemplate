@@ -1,0 +1,33 @@
+%!Mode:: "TeX:UTF-8"
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+\chapter{图片}
+\label{cha:5}
+
+之前用的 subplot 不行了。这里用 subfloat。如图 \ref{fig:example}。
+
+\begin{figure}
+\centering
+\subfloat[可以有子标题也可以没有]{%
+  \includegraphics[width=0.4\textwidth]{1.pdf}
+}
+\subfloat[]{%
+  \includegraphics[width=0.4\textwidth]{2.pdf}
+}
+\\
+\subfloat[I'm 3]{%
+  \includegraphics[width=0.4\textwidth]{3.pdf}
+}
+\hfill
+\subfloat[And at last]{%
+  \includegraphics[width=0.4\textwidth]{4.pdf}
+}
+\caption{总标题}
+\label{fig:example}
+\end{figure}
+
+
+
